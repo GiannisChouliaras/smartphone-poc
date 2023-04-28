@@ -1,4 +1,4 @@
-package com.vodafone.smartphonemigrationpoc.item;
+package com.vodafone.smartphonemigrationpoc.item.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 public class Camera {
 
     private String backMpixels;
-    private String frontMpixels;
-    private String secondBackMpixels;
     private String secondFrontMpixels;
-    private boolean backFlash;
     private boolean frontFlash;
+    private String secondBackMpixels;
+    private String frontMpixels;
+    private boolean backFlash;
 }

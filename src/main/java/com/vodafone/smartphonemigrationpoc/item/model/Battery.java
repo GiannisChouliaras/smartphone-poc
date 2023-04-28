@@ -1,4 +1,4 @@
-package com.vodafone.smartphonemigrationpoc.item;
+package com.vodafone.smartphonemigrationpoc.item.model;
 
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 @NoArgsConstructor
 public class Battery {
-    private boolean removeable;
-    private boolean quickcharge;
-    private String standbyTime;
     private String talkTime;
     private String capacity;
+    private boolean removable;
+    private String standbyTime;
+    private boolean quickcharge;
 }

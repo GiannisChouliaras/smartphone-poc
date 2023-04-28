@@ -1,4 +1,4 @@
-package com.vodafone.smartphonemigrationpoc.item;
+package com.vodafone.smartphonemigrationpoc.item.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Body {
 
-    private String simType;
-    private String ipRating;
-    private String height;
-    private String width;
     private String weight;
+    private String ipRating;
+    private String simType;
+    private String width;
+    private String height;
 }
