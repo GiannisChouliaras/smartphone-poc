@@ -6,6 +6,7 @@
   </a>
 
   <h3 align="center">Smartphone Migration PoC</h3>
+  </div>
 
 <!-- ROADMAP -->
 ## Roadmap
