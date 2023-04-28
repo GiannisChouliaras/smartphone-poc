@@ -13,7 +13,7 @@
 ## Roadmap
 
 - [x] Setup GitHub repo
-- [x] Convert them to DTOs (get classes from atg)
+- [x] Convert dummy json to DTOs (get classes from atg)
 - [ ] Get the response of the guided items (from atg service) as json
 - [ ] Create a new DTO needed for the broadleaf
 - [ ] Convert the DTOs from atg to the new DTOs
