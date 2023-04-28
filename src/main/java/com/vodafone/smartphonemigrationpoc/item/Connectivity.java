@@ -1,7 +1,7 @@
 package com.vodafone.smartphonemigrationpoc.item;
 
 import lombok.NoArgsConstructor;
-
+import lombok.Data;
 @Data
 @NoArgsConstructor
 public class Connectivity {
