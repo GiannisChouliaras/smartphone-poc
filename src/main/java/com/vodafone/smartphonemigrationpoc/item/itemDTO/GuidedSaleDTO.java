@@ -1,6 +1,6 @@
 package com.vodafone.smartphonemigrationpoc.item.itemDTO;
 
-import com.vodafone.smartphonemigrationpoc.item.model.GuidedSaleItem;
+import com.vodafone.smartphonemigrationpoc.item.modelATG.GuidedSaleItem;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

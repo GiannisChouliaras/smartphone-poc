@@ -1,4 +1,4 @@
-package com.vodafone.smartphonemigrationpoc.item;
+package com.vodafone.smartphonemigrationpoc.item.modelATG;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
