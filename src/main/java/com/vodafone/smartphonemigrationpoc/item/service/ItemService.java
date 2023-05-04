@@ -1,4 +1,4 @@
-package com.vodafone.smartphonemigrationpoc.service;
+package com.vodafone.smartphonemigrationpoc.item.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vodafone.smartphonemigrationpoc.item.itemDTO.GuidedSaleDTO;

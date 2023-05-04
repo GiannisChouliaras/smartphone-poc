@@ -1,6 +1,6 @@
 package com.vodafone.smartphonemigrationpoc.item.controller;
 
-import com.vodafone.smartphonemigrationpoc.service.ItemService;
+import com.vodafone.smartphonemigrationpoc.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
