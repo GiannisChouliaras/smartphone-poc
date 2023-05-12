@@ -33,8 +33,7 @@ public class ItemService {
 //        ProductItemDTO productsItemDTO = convert(guidedSaleDTO);
         ProductItemDTO productsItemDTO = createDummyProductDTO();
         String json = objectMapper.writeValueAsString(productsItemDTO.getProducts().get(0));
-        System.out.println(json);
-//        performPostRequest(json);
+        performPostRequest(json);
 
         // TODO: 2: after the mapping --> convert dto to json (will be used as body on blf endpoint)
         // TODO: 3: after the conversion of dto to json, build the endpoint for broadleaf.
