@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Smartphone {
     private boolean talkPhone;
     private boolean ecoRating;
