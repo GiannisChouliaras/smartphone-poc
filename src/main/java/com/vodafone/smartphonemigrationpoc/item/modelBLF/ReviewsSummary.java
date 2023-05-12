@@ -7,4 +7,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class ReviewsSummary {
     private int numberOfReviews;
+
+    public ReviewsSummary() {
+        numberOfReviews = 0;
+    }
 }

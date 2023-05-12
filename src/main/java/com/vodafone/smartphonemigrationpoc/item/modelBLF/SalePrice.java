@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class SalePrice {
     private int amount;
+
+    public SalePrice() {
+        amount = 1;
+    }
 }

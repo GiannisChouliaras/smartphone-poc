@@ -9,5 +9,4 @@ public class SmartphoneMigrationPocApplication {
     public static void main(String[] args) {
         SpringApplication.run(SmartphoneMigrationPocApplication.class, args);
     }
-
 }

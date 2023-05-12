@@ -29,4 +29,28 @@ public class Device {
     private boolean email;
     private boolean hdVoice;
     private boolean mp3;
+
+    public Device() {
+        this.smartphone = new Smartphone();
+        this.fastCharging = false;
+        this.removableBattery = false;
+        this.frontFlash = false;
+        this.backFlash = false;
+        this.agps = false;
+        this.bluetooth = false;
+        this.dlna = false;
+        this.gps = false;
+        this.gpsNavigation = false;
+        this.nfc = false;
+        this.wifiHotspot = false;
+        this.pcConnectionCableIncluded = false;
+        this.batteryIncluded = false;
+        this.chargerIncluded = false;
+        this.handsfreeIncluded = false;
+        this.manualIncluded = false;
+        this.fmRadio = false;
+        this.email = false;
+        this.hdVoice = false;
+        this.mp3 = false;
+    }
 }
