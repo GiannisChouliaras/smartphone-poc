@@ -6,12 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class TangibleCharacteristic {
     private boolean wifi;
     private Device device;
-
-    public TangibleCharacteristic() {
-        wifi = false;
-        device = new Device();
-    }
 }

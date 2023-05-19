@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class DefaultPrice {
     private int amount;
-
-    public DefaultPrice() {
-        amount = 1;
-    }
 }

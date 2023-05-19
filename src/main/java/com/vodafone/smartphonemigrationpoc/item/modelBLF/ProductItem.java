@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties({"portalReady", "deleted"})
 public class ProductItem {
     private ReviewsSummary reviewsSummary;
@@ -31,28 +32,4 @@ public class ProductItem {
     private String uri;
     private String sku;
     private String productSubtype;
-
-    public ProductItem() {
-        reviewsSummary = new ReviewsSummary();
-        tangibleCharacteristic = new TangibleCharacteristic();
-        defaultPrice = new DefaultPrice();
-        salePrice = new SalePrice();
-        discountable = true;
-        onOffer = false;
-        isPortalReady = false;
-        online = true;
-        activeStartDate = "2023-05-04T04:00:00.000Z";
-        productType = "VARIANT_BASED";
-        individuallySold = true;
-        pricingKey = "4dcce69d-b5d8-4fa2-8240-0ece2b4a1095";
-        inventoryType = "PHYSICAL";
-        eligibleForPickup = false;
-        availableOnline = true;
-        inventoryCheckStrategy = "NEVER";
-        inventoryReservationStrategy = "NEVER";
-        name = "dummyTest";
-        uri = "/dummmyTest-3";
-        sku = "123456";
-        productSubtype = "3000";
-    }
 }
