@@ -61,11 +61,11 @@ public class ProductItemDTO {
     }
 
     private SalePrice createSalePrice(GuidedSaleItem item) {
-        return new SalePrice(Integer.parseInt(item.getBasicInfo().getPrice()));
+        return new SalePrice(Float.parseFloat(item.getBasicInfo().getPrice()));
     }
 
     private DefaultPrice createDefaultPrice(GuidedSaleItem item) {
-        return new DefaultPrice(Integer.parseInt(item.getBasicInfo().getPrice()));
+        return new DefaultPrice(Float.parseFloat(item.getBasicInfo().getPrice()));
     }
 
     private TangibleCharacteristic createTangibleChar(GuidedSaleItem item) {

@@ -25,22 +25,23 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class ItemService {
 
-    private static final String DATA = "/Users/unlock/IdeaProjects/smartphone-poc/data/items.json";
+    private static final String DATA = "/home/theofanis/Documents/smartphone-poc/data/items.json";
     private static final String CATALOG_API = "https://localhost:8442/products";
 
     public String getItems() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         GuidedSaleDTO guidedSaleDTO = objectMapper.readValue(new File(DATA), GuidedSaleDTO.class);
         ProductItemDTO productsItemDTO = convert(guidedSaleDTO);
+        WebClient webClient = createWebClientWithSSLConfiguration();
         for (ProductItem item : productsItemDTO.getProducts()) {
             String jsonBody = objectMapper.writeValueAsString(item);
-            createAndExecutePostRequest(jsonBody);
+            createAndExecutePostRequest(jsonBody,webClient);
+            System.out.println(jsonBody);
         }
-        return "Successfully Created and POSTED " + productsItemDTO.getProducts().size() + "Products on Broadleaf";
+        return "Successfully Created and POSTED " + productsItemDTO.getProducts().size() + " Products on Broadleaf";
     }
 
-    private void createAndExecutePostRequest(String json) throws SSLException {
-        WebClient webClient = createWebClientWithSSLConfiguration();
+    private void createAndExecutePostRequest(String json,WebClient webClient) throws SSLException {
         executePostRequest(json, webClient);
     }
 
@@ -48,7 +49,7 @@ public class ItemService {
         webClient.post()
                 .uri(CATALOG_API)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .header("X-Context-Request", "{\"catalogId\":\"01GEKZ5989PA5K0B2YYA4E114X\",\"sandboxId\":\"01GZ3QTA913K9V03SQC4MJ1BNY\",\"tenantId\":\"5DF1363059675161A85F576D\",\"applicationId\":\"01GEKYXX9CEP821JMDZ9N117J8\",\"customerContextId\":\"01GEKYXX9CEP821JMDZ9N117J8\",\"changeContainer\":{\"name\":\"PRODUCT\"}}")
+                .header("X-Context-Request", "{\"catalogId\":\"01GEKZ5989PA5K0B2YYA4E114X\",\"tenantId\":\"5DF1363059675161A85F576D\",\"applicationId\":\"01GEKYXX9CEP821JMDZ9N117J8\"}")
                 .body(BodyInserters.fromValue(json))
                 .retrieve()
                 .bodyToMono(String.class)
