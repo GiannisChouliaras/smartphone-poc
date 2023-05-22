@@ -11,11 +11,4 @@ public class Smartphone {
     private boolean ecoRating;
     private boolean dualSim;
     private boolean wirelessCharging;
-
-    public Smartphone() {
-        this.talkPhone = false;
-        this.ecoRating = false;
-        this.dualSim = false;
-        this.wirelessCharging = false;
-    }
 }

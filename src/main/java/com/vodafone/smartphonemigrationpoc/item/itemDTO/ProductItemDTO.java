@@ -30,28 +30,27 @@ public class ProductItemDTO {
 
     private ProductItem assignDataFromGuidedToProduct(GuidedSaleItem item) {
         ProductItem productItem = new ProductItem();
-        productItem.setReviewsSummary(createReviewsSummary(item));
+        productItem.setReviewsSummary(createReviewsSummary());
         productItem.setTangibleCharacteristic(createTangibleChar(item));
         productItem.setDefaultPrice(createDefaultPrice(item));
         productItem.setSalePrice(createSalePrice(item));
-        // TODO: populate boolean and string values from item
         productItem.setDiscountable(false);
         productItem.setOnOffer(false);
         productItem.setPortalReady(false);
-        productItem.setOnline(false);
-        productItem.setActiveStartDate("date");
-        productItem.setProductType("productType");
-        productItem.setIndividuallySold(false);
+        productItem.setOnline(true);
+        productItem.setActiveStartDate("2023-05-04T04:00:00.000Z");
+        productItem.setProductType("VARIANT_BASED");
+        productItem.setIndividuallySold(true);
         productItem.setPricingKey("pricingKey");
-        productItem.setInventoryType("inventoryType");
+        productItem.setInventoryType("PHYSICAL");
         productItem.setEligibleForPickup(false);
-        productItem.setAvailableOnline(false);
-        productItem.setInventoryCheckStrategy("inventoryCheckStrategy");
-        productItem.setInventoryReservationStrategy("inventoryReservationStrategy");
-        productItem.setName("name");
-        productItem.setUri("uri");
-        productItem.setSku("sku");
-        productItem.setProductSubtype("productSubtype");
+        productItem.setAvailableOnline(true);
+        productItem.setInventoryCheckStrategy("NEVER");
+        productItem.setInventoryReservationStrategy("NEVER");
+        productItem.setName(item.getBasicInfo().getDeviceName());
+        productItem.setUri(item.getBasicInfo().getUrl());
+        productItem.setSku(item.getBasicInfo().getSku());
+        productItem.setProductSubtype("3000");
 
         return productItem;
     }
@@ -65,10 +64,11 @@ public class ProductItemDTO {
     }
 
     private TangibleCharacteristic createTangibleChar(GuidedSaleItem item) {
-        return new TangibleCharacteristic(); // TODO: populate TangibleCharacteristics
+        Device device = new Device(item);
+        return new TangibleCharacteristic(item.getConnectivityInfo().isWifi(), device); // TODO: populate TangibleCharacteristics
     }
 
-    private ReviewsSummary createReviewsSummary(GuidedSaleItem item) {
-        return new ReviewsSummary(); // TODO: populate ReviewsSummary
+    private ReviewsSummary createReviewsSummary() {
+        return new ReviewsSummary(0); // TODO: populate ReviewsSummary
     }
 }
