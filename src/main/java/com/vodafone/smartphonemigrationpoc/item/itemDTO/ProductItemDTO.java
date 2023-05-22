@@ -48,11 +48,16 @@ public class ProductItemDTO {
         productItem.setInventoryCheckStrategy("NEVER");
         productItem.setInventoryReservationStrategy("NEVER");
         productItem.setName(item.getBasicInfo().getDeviceName());
-        productItem.setUri(item.getBasicInfo().getUrl());
+        productItem.setUri(createUriBasedOnName(item.getBasicInfo().getDeviceName()));
         productItem.setSku(item.getBasicInfo().getSku());
         productItem.setProductSubtype("3000");
 
         return productItem;
+    }
+
+    private String createUriBasedOnName(String deviceName) {
+        String nameWithoutSpaces = deviceName.replaceAll("\\s", "");
+        return "/" + nameWithoutSpaces.trim();
     }
 
     private SalePrice createSalePrice(GuidedSaleItem item) {
@@ -65,10 +70,10 @@ public class ProductItemDTO {
 
     private TangibleCharacteristic createTangibleChar(GuidedSaleItem item) {
         Device device = new Device(item);
-        return new TangibleCharacteristic(item.getConnectivityInfo().isWifi(), device); // TODO: populate TangibleCharacteristics
+        return new TangibleCharacteristic(item.getConnectivityInfo().isWifi(), device);
     }
 
     private ReviewsSummary createReviewsSummary() {
-        return new ReviewsSummary(0); // TODO: populate ReviewsSummary
+        return new ReviewsSummary(0);
     }
 }
