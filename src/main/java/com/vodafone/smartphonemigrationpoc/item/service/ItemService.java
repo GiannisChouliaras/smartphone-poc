@@ -32,11 +32,11 @@ public class ItemService {
         ObjectMapper objectMapper = new ObjectMapper();
         GuidedSaleDTO guidedSaleDTO = objectMapper.readValue(new File(DATA), GuidedSaleDTO.class);
         ProductItemDTO productsItemDTO = convert(guidedSaleDTO);
+        // Create a method that returns a HashMap where you categorize the products
         WebClient webClient = createWebClientWithSSLConfiguration();
         for (ProductItem item : productsItemDTO.getProducts()) {
             String jsonBody = objectMapper.writeValueAsString(item);
             createAndExecutePostRequest(jsonBody,webClient);
-            System.out.println(jsonBody);
         }
         return "Successfully Created and POSTED " + productsItemDTO.getProducts().size() + " Products on Broadleaf";
     }
