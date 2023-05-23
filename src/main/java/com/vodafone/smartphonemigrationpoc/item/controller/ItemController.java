@@ -21,12 +21,12 @@ public class ItemController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public String getItems() throws IOException {
+    public String getItems() {
 
         String response;
 
         try {
-            response = itemService.getItems();
+            response = itemService.postRequestsWithoutCategorization();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
