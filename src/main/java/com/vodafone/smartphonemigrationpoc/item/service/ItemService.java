@@ -20,6 +20,10 @@ import reactor.netty.http.client.HttpClient;
 import javax.net.ssl.SSLException;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -32,12 +36,12 @@ public class ItemService {
         ObjectMapper objectMapper = new ObjectMapper();
         GuidedSaleDTO guidedSaleDTO = objectMapper.readValue(new File(DATA), GuidedSaleDTO.class);
         ProductItemDTO productsItemDTO = convert(guidedSaleDTO);
-        // Create a method that returns a HashMap where you categorize the products
-        WebClient webClient = createWebClientWithSSLConfiguration();
-        for (ProductItem item : productsItemDTO.getProducts()) {
-            String jsonBody = objectMapper.writeValueAsString(item);
-            createAndExecutePostRequest(jsonBody,webClient);
-        }
+        HashMap<String, ArrayList<ProductItem>> productsMap = categorizeProducts(productsItemDTO);
+//        WebClient webClient = createWebClientWithSSLConfiguration();
+//        for (ProductItem item : productsItemDTO.getProducts()) {
+//            String jsonBody = objectMapper.writeValueAsString(item);
+//            createAndExecutePostRequest(jsonBody,webClient);
+//        }
         return "Successfully Created and POSTED " + productsItemDTO.getProducts().size() + " Products on Broadleaf";
     }
 
@@ -73,5 +77,19 @@ public class ItemService {
         ProductItemDTO productItemDTO = new ProductItemDTO();
         productItemDTO.convert(guidedSaleDTO);
         return productItemDTO;
+    }
+
+    private HashMap<String, ArrayList<ProductItem>> categorizeProducts(ProductItemDTO productsItemDTO){
+        HashMap<String,ArrayList<ProductItem>> hashMap = new HashMap<>();
+        for(ProductItem item: productsItemDTO.getProducts()){
+            if(hashMap.containsKey(item.getName())){
+                hashMap.get(item.getName()).add(item);
+            }
+            else{
+                hashMap.put(item.getName(),new ArrayList<ProductItem>());
+                hashMap.get(item.getName()).add(item);
+            }
+        }
+        return hashMap;
     }
 }
