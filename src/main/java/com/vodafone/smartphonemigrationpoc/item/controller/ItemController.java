@@ -16,8 +16,12 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class ItemController {
 
-    @Autowired
     private ItemService itemService;
+
+    @Autowired
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -28,9 +32,8 @@ public class ItemController {
         try {
             response = itemService.postRequestsWithoutCategorization();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
-
         return response != null ? response : "Null pointer";
     }
 }
